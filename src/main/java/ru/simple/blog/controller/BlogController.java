@@ -16,20 +16,20 @@ public class BlogController {
     @Autowired
     private MessageRepository messageRepository;
 
-    @GetMapping("/blog")
+    @GetMapping("/")
     public String blog(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Map<String, Object> model) {
         model.put("name", name);
         return "blog";
     }
 
-    @GetMapping("/")
-    public String main(Map<String, Object> model) {
+    @GetMapping("/main")
+    public String init(Map<String, Object> model) {
         Iterable<Message> messages = messageRepository.findAll();
         model.put("messages", messages);
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
         Message message = new Message(text, tag);
         messageRepository.save(message);
