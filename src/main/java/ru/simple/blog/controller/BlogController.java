@@ -25,9 +25,17 @@ public class BlogController {
     }
 
     @GetMapping("/main")
-    public String init(Map<String, Object> model) {
+    public String init(@RequestParam(required = false, defaultValue = "") String filter, Map<String, Object> model) {
         Iterable<Message> messages = messageRepository.findAll();
+        if (filter != null && !filter.isEmpty()) {
+            messages = messageRepository.findByTag(filter);
+        } else {
+            messages = (List<Message>) messageRepository.findAll();
+        }
+
         model.put("messages", messages);
+        model.put("filter", filter);
+
         return "main";
     }
 
@@ -44,17 +52,4 @@ public class BlogController {
         return "main";
     }
 
-    @PostMapping("filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model) {
-        List<Message> messages;
-        if (filter != null && !filter.isEmpty()) {
-            messages = messageRepository.findByTag(filter);
-        } else {
-            messages = (List<Message>) messageRepository.findAll();
-        }
-
-        model.put("messages", messages);
-
-        return "main";
-    }
 }
