@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+List of users
+<form action="/user" method="post">
+    <label>
+        <input type="text" name="username" value="{{user.username}}"/>
+    </label>
+    <div>
+        {{#roles}}
+            <div>
+                <label>
+                    <input type="checkbox" name="{{.}}" value="{{.}}" checked = />
+                    {{.}}
+                </label>
+            </div>
+        {{/roles}}
+    </div>
+    <label>
+        <input type="text" name="userId" value="{{user.id}}"/>
+    </label>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <button type="submit">Save</button>
+</form>
+
+</body>

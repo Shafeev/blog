@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+List of users
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#users}}
+        <tr>
+            <td>{{username}}</td>
+            {{#roles}}
+                <td>{{.}}</td>
+            {{/roles}}
+            <td><a href="/user/{{id}}">Edit</a></td>
+        </tr>
+    {{/users}}
+    </tbody>
+</table>
+
+</body>
