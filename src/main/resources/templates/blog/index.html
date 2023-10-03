@@ -2,9 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>#{blog.title}</title>
+    <title th:text="#{blog.title}"></title>
 </head>
 <body>
-    <div th:text="#{blog.title}"></div>
+    <div th:each="blog : ${blogs}">
+        <a th:href="@{/{id}(id=${blog.getId()})}"
+           th:text="${blog.getTitle()}">Blog</a>
+    </div>
+
+    <a href="/add">Add page</a>
 </body>
 </html>

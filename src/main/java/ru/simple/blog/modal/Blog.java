@@ -49,4 +49,17 @@ public class Blog {
     @Column(name="update_time", updatable = false)
     @org.hibernate.annotations.CreationTimestamp
     private Date updateTime;
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
