@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{blog.page.edit}"></title>
+</head>
+<body>
+<div th:text="#{blog.page.edit}"></div>
+<p th:text="${blog.getId()}">VALUE</p>
+<p th:text="${blog.getTitle()}">VALUE</p>
+
+<a th:href="@{/{id}/edit(id=${blog.getId()})}">Edit</a>
+</body>
+</html>
