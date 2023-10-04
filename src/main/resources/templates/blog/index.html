@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="#{blog.title}"></title>
-</head>
+<head th:replace="blog/header::head-fragment"></head>
 <body>
-    <div th:each="blog : ${blogs}">
-        <a th:href="@{/{id}(id=${blog.getId()})}"
-           th:text="${blog.getTitle()}">Blog</a>
+<header th:replace="blog/header::header-fragment"></header>
+<main class="container">
+    <div class="row mb-2">
+        <div th:each="blog : ${blogs}" class="col-md-12">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <a th:href="@{/{id}(id=${blog.getId()})}" class="d-inline-block mb-4 text-primary">
+                        <strong th:text="${blog.getTitle()}"></strong>
+                    </a>
+                    <h3 class="mb-0" th:text="${blog.getTitle()}"></h3>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                        lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <a href="/add">Add page</a>
+</main>
 </body>
 </html>

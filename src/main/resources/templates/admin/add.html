@@ -6,7 +6,7 @@
 </head>
 <body>
     <div th:text="#{blog.page.create}"></div>
-    <form th:method="POST" th:action="@{/}" th:object="${blog}">
+    <form th:method="POST" th:action="@{/static}" th:object="${blog}">
         <label for="title">Enter title:</label>
         <input type="text" th:field="*{title}" id="title"/>
         <input type="submit" value="Create!"/>

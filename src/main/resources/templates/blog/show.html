@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="#{blog.page.edit}"></title>
-</head>
+<head th:replace="blog/header::head-fragment"></head>
 <body>
-<div th:text="#{blog.page.edit}"></div>
-<p th:text="${blog.getId()}">VALUE</p>
-<p th:text="${blog.getTitle()}">VALUE</p>
-
-<a th:href="@{/{id}/edit(id=${blog.getId()})}">Edit</a>
+<header th:replace="blog/header::header-fragment"></header>
+<main class="container">
+    <div class="row mb-2">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-0" th:text="${blog.getTitle()}"></h3>
+                <p th:text="${blog.getTitle()}" class="card-text mb-auto"></p>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
